@@ -6,7 +6,7 @@ while len(numbers)>1:
   for number in numbers:
     sum+=int(number)
     numbers=str(sum)
-  print("The sum of numbers is ", numbers)
+print("The sum of numbers is ", numbers)
 if(numbers=="1"):
   print("Magic number")
 

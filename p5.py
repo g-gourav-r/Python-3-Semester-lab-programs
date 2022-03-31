@@ -1,19 +1,23 @@
-# Program to print all the words present in the string and print their length
-s=input('Enter the string ')
-words=s.split()
-for word in words:
-  print(word , ":" ,len(word))
-print("Total words = ",len(words
+# Hangman game
 
-#FIbonacci series in reverse order
-l=[]
-n=int(input("Enter the number "))
-if n==1:
-  l.append(0)
-else:
-  l.append(0)
-  l.append(1)
-for i in range(2,n):
-  l.append(l[i-1]+l[i-2])
-l.reverse()
-print(l)
+hint ="This fruit keeps doctor away"
+word = "apple"
+guess=["_"]*len(word)
+turns=len(word)+1
+print("Hint :", hint)
+
+while turns>0:
+  print(guess)
+  letter=input("Guess the letter : ")
+  if letter in word:
+    for index in range(len(word)):
+      if letter == word[index]:
+        guess[index]=letter
+    print('Right guess')
+  else:
+    print('Wrong guess')
+    turns-=1
+    print("Reaminfing turns", turns)
+  if list(word)==guess:
+      print("Guessed the word properly")
+      break
