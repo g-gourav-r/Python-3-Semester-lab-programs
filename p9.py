@@ -1,39 +1,41 @@
 from tkinter import *
 import random
 
-window = Tk()
+window=Tk()
 window.title("Program 9")
-window.geometry("300x400")
-errmsg=StringVar()
+window.geometry("500x200")
+message=StringVar()
 
-lab1=Label(window,text="Random program number assigner ")
-lab1.grid(row=0)
-lab2=Label(window,text="Enter the number of students")
+lab1=Label(window,text="Random Program Assigner")
+lab1.grid(row=0,column=1)
+lab2=Label(window,text="Enter the number of Students")
 lab2.grid(row=1,column=0)
-students=Entry(window,width=25)
-students.grid(row=1,column=1)
+students=Entry(window,width=40)
+students.grid(row=1,column=1,pady=10)
 lab3=Label(window,text="Enter the number of programs")
 lab3.grid(row=2,column=0)
-programs=Entry(window,width=25)
-programs.grid(row=2,column=1)
+programs=Entry(window,width=40)
+programs.grid(row=2,column=1,pady=10)
+lab4=Label(window,textvariable=message)
+lab4.grid(row=4)
 
-def randassign():
-  studentNo=students.get()
-  programNo=programs.get()
-  detail=""
-  if studentNo.isnumeric() and programNo.isnumeric():
-    for s in range(1,int(studentNo)+1):
-      detail+="student"+str(s)+ ", Program "+str(random.randint(1,programNo+1))+"\n"
-      file=open("Studentprog.csv",'w')
-      file.write(details)
-      file.close()
-      errmsg.set("Successfully assigned the values")
-  else:
-    errmsg.set("Not a valid input")
-assign=Button(window,width=10,text="Assign",command=randassign)
-assign.grid(row=3)
-msg=Label(window,textvariable=errmsg)
-msg.grid(row=4,column=0)
 
+def randass():
+    studentno=students.get()
+    programno=programs.get()
+    detail=""
+    if studentno.isnumeric() and programno.isnumeric():
+        for i in range(1,int(studentno)+1):
+            detail+="Student"+str(i)+"- Program number "
+            detail+=str(random.randint(1,int(programno)))+"\n"
+        file=open("students.csv",'w')
+        file.write(detail)
+        file.close()
+        message.set("Done")
+    else:
+        message.set("Invalid")
+
+assign=Button(window,text="Assign",command=randass)
+assign.grid(row=3,column=1)
+        
 window.mainloop()
-  

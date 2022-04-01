@@ -3,7 +3,7 @@ s=input('Enter the string ')
 words=s.split()
 for word in words:
   print(word , ":" ,len(word))
-print("Total words = ",len(words
+print("Total words = ",len(words)
 
 #FIbonacci series in reverse order
 l=[]
